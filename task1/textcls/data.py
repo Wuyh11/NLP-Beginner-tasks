@@ -9,34 +9,43 @@ from sklearn.model_selection import train_test_split
 
 @dataclass(slots=True)
 class DatasetSplit:
+    """单个数据切分（文本与标签）。"""
+
     texts: list[str]
     labels: list[int]
 
 
 @dataclass(slots=True)
 class Corpus:
+    """训练/验证/测试三份数据集合。"""
+
     train: DatasetSplit
     val: DatasetSplit
     test: DatasetSplit
 
 
 def _load_tsv(tsv_path: Path) -> pd.DataFrame:
+    """读取 TSV 并统一为 `text,label` 两列。"""
+
     if not tsv_path.exists():
         raise FileNotFoundError(f"未找到数据文件: {tsv_path}")
 
-    df = pd.read_csv(tsv_path, sep="\t")
+    # 兼容两种格式：
+    # 1) 含表头：text/sentence/review + label/sentiment/score
+    # 2) 无表头：第一列文本、第二列标签
+    df = pd.read_csv(tsv_path, sep="\t", dtype=str)
     lowered = {c.lower(): c for c in df.columns}
 
     text_col = lowered.get("text") or lowered.get("sentence") or lowered.get("review")
     label_col = lowered.get("label") or lowered.get("sentiment") or lowered.get("score")
 
-    if text_col is None or label_col is None:
-        raise ValueError(
-            f"{tsv_path.name} 必须包含文本列(text/sentence/review)和标签列(label/sentiment/score)。"
-        )
+    if text_col is not None and label_col is not None:
+        sub = df[[text_col, label_col]].copy()
+        sub.columns = ["text", "label"]
+    else:
+        raw = pd.read_csv(tsv_path, sep="\t", header=None, names=["text", "label"], usecols=[0, 1], dtype=str)
+        sub = raw.copy()
 
-    sub = df[[text_col, label_col]].copy()
-    sub.columns = ["text", "label"]
     sub = sub.dropna().reset_index(drop=True)
     sub["text"] = sub["text"].astype(str)
     sub["label"] = sub["label"].astype(int)
@@ -50,7 +59,7 @@ def load_corpus(
     val_size: float = 0.1,
     random_state: int = 42,
 ) -> Corpus:
-    """读取并划分数据集。"""
+    """读取训练/测试集并按比例切分验证集。"""
     data_dir = Path(data_dir)
 
     train_df = _load_tsv(data_dir / train_file)

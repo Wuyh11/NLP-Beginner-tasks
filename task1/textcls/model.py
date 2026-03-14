@@ -16,6 +16,7 @@ class LinearClassifier:
         generator = torch.Generator(device=device)
         generator.manual_seed(seed)
 
+        # 参数初始化：W 为高斯随机，b 为 0
         self.W = torch.empty((input_dim, num_classes), device=device).normal_(
             mean=0.0, std=0.02, generator=generator
         )
@@ -26,6 +27,8 @@ class LinearClassifier:
 
     @staticmethod
     def _cross_entropy_with_grad(logits: torch.Tensor, y: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """返回交叉熵损失及对 logits 的梯度。"""
+
         shifted = logits - logits.max(dim=1, keepdim=True).values
         exp = torch.exp(shifted)
         probs = exp / exp.sum(dim=1, keepdim=True)
@@ -40,6 +43,8 @@ class LinearClassifier:
 
     @staticmethod
     def _mse_with_grad(logits: torch.Tensor, y: torch.Tensor, num_classes: int) -> tuple[torch.Tensor, torch.Tensor]:
+        """返回 MSE 损失及对 logits 的梯度。"""
+
         target = torch.zeros_like(logits)
         target[torch.arange(logits.size(0), device=logits.device), y] = 1.0
 
@@ -69,6 +74,8 @@ class LinearClassifier:
         return loss.item(), grad_W, grad_b
 
     def step(self, grad_W: torch.Tensor, grad_b: torch.Tensor, lr: float) -> None:
+        """手写 SGD 参数更新。"""
+
         self.W -= lr * grad_W
         self.b -= lr * grad_b
 

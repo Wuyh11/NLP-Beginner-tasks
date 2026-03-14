@@ -8,7 +8,9 @@ import pandas as pd
 from .train import TrainConfig, run_training
 
 
-def run_default_experiments(output_dir: str = "outputs") -> pd.DataFrame:
+def run_default_experiments(output_dir: str = "task1/outputs") -> pd.DataFrame:
+    """运行 Task-1 的默认对比实验并绘图。"""
+
     settings = [
         {"name": "bow_ce_lr0.1", "ngram": 1, "loss": "ce", "lr": 0.1},
         {"name": "ngram2_ce_lr0.1", "ngram": 2, "loss": "ce", "lr": 0.1},
@@ -49,5 +51,5 @@ def run_default_experiments(output_dir: str = "outputs") -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    table = run_default_experiments(output_dir="outputs")
+    table = run_default_experiments(output_dir="task1/outputs")
     print(table)

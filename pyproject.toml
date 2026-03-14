@@ -1,7 +1,7 @@
 [project]
-name = "nlp-beginner-task1"
+name = "nlp-beginner-tasks"
 version = "0.1.0"
-description = "FudanNLP NLP-Beginner Task-1: 基于机器学习的文本分类"
+description = "FudanNLP NLP-Beginner Task-1/Task-2 文本分类实验"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -16,6 +16,8 @@ dependencies = [
 [project.scripts]
 task1-train = "textcls.train:main"
 task1-exp = "textcls.experiments:run_default_experiments"
+task2-train = "textdl.train:main"
+task2-exp = "textdl.experiments:run_all_experiments"
 
 [build-system]
 requires = ["hatchling>=1.24.0"]
@@ -29,7 +31,7 @@ dev-dependencies = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/textcls"]
+packages = ["task1/textcls", "task2/textdl"]
 
 [tool.ruff]
 line-length = 100

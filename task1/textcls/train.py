@@ -18,6 +18,8 @@ from .model import LinearClassifier
 
 @dataclass(slots=True)
 class TrainConfig:
+    """Task-1 训练超参数配置。"""
+
     data_dir: str = "data"
     train_file: str = "new_train.tsv"
     test_file: str = "new_test.tsv"
@@ -32,17 +34,21 @@ class TrainConfig:
     weight_decay: float = 0.0
     loss: str = "ce"
     eval_every: int = 50
-    output_dir: str = "outputs"
+    output_dir: str = "task1/outputs"
     device: str = "cpu"
 
 
 def set_seed(seed: int) -> None:
+    """设置随机种子，保证结果可复现。"""
+
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
 
 
 def accuracy(model: LinearClassifier, vec: CountVectorizer, texts: list[str], labels: list[int], device: torch.device) -> float:
+    """分批推理并计算准确率。"""
+
     model_pred: list[int] = []
     bs = 256
     for i in range(0, len(texts), bs):
@@ -55,6 +61,8 @@ def accuracy(model: LinearClassifier, vec: CountVectorizer, texts: list[str], la
 
 
 def run_training(cfg: TrainConfig) -> dict:
+    """执行完整训练流程并保存结果 JSON。"""
+
     set_seed(cfg.random_state)
     device = torch.device(cfg.device)
 
@@ -77,6 +85,7 @@ def run_training(cfg: TrainConfig) -> dict:
     tic = time()
 
     for epoch in range(1, cfg.epochs + 1):
+        # 每个 epoch 打乱训练集顺序
         indices = list(range(len(corpus.train.texts)))
         random.shuffle(indices)
 
@@ -98,6 +107,7 @@ def run_training(cfg: TrainConfig) -> dict:
             step += 1
             pbar.set_postfix(loss=f"{loss:.4f}")
 
+            # 按固定间隔在验证集评估
             if step % cfg.eval_every == 0:
                 val_acc = accuracy(model, vec, corpus.val.texts, corpus.val.labels, device=device)
                 history.append(
@@ -146,7 +156,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--weight-decay", type=float, default=0.0)
     p.add_argument("--loss", type=str, choices=["ce", "mse"], default="ce")
     p.add_argument("--eval-every", type=int, default=50)
-    p.add_argument("--output-dir", type=str, default="outputs")
+    p.add_argument("--output-dir", type=str, default="task1/outputs")
     p.add_argument("--device", type=str, default="cpu")
     return p
 

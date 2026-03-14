@@ -37,6 +37,8 @@ class CountVectorizer:
         return out
 
     def fit(self, texts: list[str]) -> None:
+        """基于训练文本统计词频并构建词表。"""
+
         counter: Counter[str] = Counter()
         for text in texts:
             grams = self._to_ngrams(self._tokenize(text))
@@ -49,6 +51,8 @@ class CountVectorizer:
         self.stoi = {tok: idx for idx, (tok, _) in enumerate(items)}
 
     def transform_batch(self, texts: list[str], device: torch.device) -> torch.Tensor:
+        """将一个 batch 的文本转为稀疏计数向量。"""
+
         x = torch.zeros((len(texts), self.vocab_size), dtype=torch.float32, device=device)
         for row, text in enumerate(texts):
             counts: Counter[int] = Counter()
