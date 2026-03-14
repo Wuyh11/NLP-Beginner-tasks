@@ -1,0 +1,131 @@
+{
+  "run_name": "math_s2s_ln_sin_in_dist",
+  "config": {
+    "run_name": "math_s2s_ln_sin_in_dist",
+    "output_dir": "task3/outputs/math",
+    "seed": 42,
+    "device": "auto",
+    "train_templates": [
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "test_templates": [
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "n_train_per_template": 2000,
+    "n_test_per_template": 400,
+    "val_ratio": 0.1,
+    "model_variant": "seq2seq",
+    "num_layers": 4,
+    "d_model": 128,
+    "nhead": 4,
+    "num_encoder_layers": 2,
+    "num_decoder_layers": 2,
+    "ff_dim": 256,
+    "dropout": 0.1,
+    "max_len": 64,
+    "norm_type": "layernorm",
+    "pos_encoding": "sinusoidal",
+    "rope_base": 10000.0,
+    "batch_size": 128,
+    "epochs": 12,
+    "lr": 0.0002
+  },
+  "device": "cuda",
+  "vocab_size": 15,
+  "best_val_exact": 0.00125,
+  "test_exact": 0.00125,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.172287039861772,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.9009836026650675,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.8207799674624134,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.7915921525321572,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.7706193442280052,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.741516105627938,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.71707925604948,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.691504067175376,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.6631285642264462,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.6198713205841875,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 11,
+      "train_loss": 1.5770288556016294,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 12,
+      "train_loss": 1.5454738606990797,
+      "val_exact": 0.0
+    }
+  ],
+  "elapsed_sec": 203.6235158443451,
+  "model_path": "task3/outputs/math/math_s2s_ln_sin_in_dist.pt"
+}

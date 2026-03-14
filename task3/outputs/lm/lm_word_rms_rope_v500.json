@@ -1,0 +1,75 @@
+{
+  "run_name": "lm_word_rms_rope_v500",
+  "config": {
+    "run_name": "lm_word_rms_rope_v500",
+    "output_dir": "task3/outputs/lm",
+    "seed": 42,
+    "device": "auto",
+    "n_sentences": 8000,
+    "tokenizer_mode": "word",
+    "vocab_size": 500,
+    "block_size": 64,
+    "batch_size": 64,
+    "num_layers": 4,
+    "d_model": 192,
+    "nhead": 6,
+    "ff_dim": 384,
+    "dropout": 0.1,
+    "max_len": 256,
+    "norm_type": "rmsnorm",
+    "pos_encoding": "rope",
+    "rope_base": 10000.0,
+    "epochs": 8,
+    "lr": 0.0002,
+    "weight_decay": 0.01
+  },
+  "device": "cuda",
+  "vocab_size": 29,
+  "best_val_ppl": 2.124438427987491,
+  "test_ppl": 2.125312501493134,
+  "sample_text": "the model learns tokenizer in practice .",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7943662957396618,
+      "val_ppl": 2.124438427987491
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7448351792124814,
+      "val_ppl": 2.1410495328332164
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.7206161333377972,
+      "val_ppl": 2.221179276337662
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.6593604147434234,
+      "val_ppl": 2.429013443051257
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.5786746336970219,
+      "val_ppl": 2.708081689510835
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.5061720690408419,
+      "val_ppl": 3.0431130530924757
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.44937132104884747,
+      "val_ppl": 3.3863536395237945
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.40645730207825814,
+      "val_ppl": 3.63224465060875
+    }
+  ],
+  "elapsed_sec": 200.8906273841858,
+  "model_path": "task3/outputs/lm/lm_word_rms_rope_v500.pt"
+}

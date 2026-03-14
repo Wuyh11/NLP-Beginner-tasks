@@ -1,0 +1,11 @@
+run_name,model,loss,lr,optimizer,kernel_sizes,glove,glove_coverage,best_val_acc,test_acc,device
+cnn_ce_lr1e3,cnn,ce,0.001,adam,"3,4,5",False,0.0,0.44431418522860494,0.44303414928981566,cuda
+cnn_focal_lr1e3,cnn,focal,0.001,adam,"3,4,5",False,0.0,0.4372801875732708,0.4366878210939861,cuda
+cnn_mse_lr1e3,cnn,mse,0.001,adam,"3,4,5",False,0.0,0.4372801875732708,0.4397098821396192,cuda
+cnn_ce_lr5e4,cnn,ce,0.0005,adam,"3,4,5",False,0.0,0.42907385697538103,0.4339679661529163,cuda
+cnn_k345_adam,cnn,ce,0.001,adam,"3,4,5",False,0.0,0.44431418522860494,0.44303414928981566,cuda
+cnn_k23_adamw,cnn,ce,0.001,adamw,"2,3",False,0.0,0.4525205158264947,0.4508915080084618,cuda
+cnn_k34567_sgd,cnn,ce,0.005,sgd,"3,4,5,6,7",False,0.0,0.4079718640093787,0.4022363251737685,cuda
+cnn_compare,cnn,ce,0.001,adam,"3,4,5",False,0.0,0.4454865181711606,0.44303414928981566,cuda
+rnn_compare,rnn,ce,0.001,adam,"3,4,5",False,0.0,0.4220398593200469,0.453006950740405,cuda
+transformer_compare,transformer,ce,0.001,adam,"3,4,5",False,0.0,0.43259085580304807,0.43729223330311273,cuda

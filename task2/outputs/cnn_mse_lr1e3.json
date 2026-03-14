@@ -1,0 +1,94 @@
+{
+  "run_name": "cnn_mse_lr1e3",
+  "config": {
+    "data_dir": "data",
+    "train_file": "new_train.tsv",
+    "test_file": "new_test.tsv",
+    "val_size": 0.1,
+    "seed": 42,
+    "min_freq": 1,
+    "vocab_size": 50000,
+    "max_len": 128,
+    "batch_size": 64,
+    "epochs": 8,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "dropout": 0.5,
+    "embedding_dim": 200,
+    "model_type": "cnn",
+    "loss": "mse",
+    "optimizer": "adam",
+    "label_smoothing": 0.0,
+    "num_filters": 100,
+    "kernel_sizes": "3,4,5",
+    "rnn_hidden": 128,
+    "rnn_type": "lstm",
+    "bidirectional": true,
+    "nhead": 4,
+    "transformer_layers": 2,
+    "ff_dim": 512,
+    "glove_path": "",
+    "freeze_embedding": false,
+    "output_dir": "task2/outputs",
+    "run_name": "cnn_mse_lr1e3",
+    "device": "auto"
+  },
+  "device": "cuda",
+  "vocab_size": 14505,
+  "glove_coverage": 0.0,
+  "best_val_acc": 0.4372801875732708,
+  "test_loss": 1.483322084400365,
+  "test_acc": 0.4397098821396192,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.15896701035553934,
+      "val_loss": 1.4237769115432346,
+      "val_acc": 0.3704572098475967
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.13884438977567692,
+      "val_loss": 1.4160203652812335,
+      "val_acc": 0.3716295427901524
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.12500358495145356,
+      "val_loss": 1.3951129130713407,
+      "val_acc": 0.3939038686987104
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.1092663676536821,
+      "val_loss": 1.3471595382914034,
+      "val_acc": 0.41031652989449
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0942718701729557,
+      "val_loss": 1.3752439600641535,
+      "val_acc": 0.4114888628370457
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.08089997168181386,
+      "val_loss": 1.4058872803713764,
+      "val_acc": 0.43141852286049237
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.06894806130701245,
+      "val_loss": 1.4020118214460777,
+      "val_acc": 0.42790152403282533
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.05810155516726963,
+      "val_loss": 1.457358643290306,
+      "val_acc": 0.4372801875732708
+    }
+  ],
+  "elapsed_sec": 154.59813690185547,
+  "model_path": "task2/outputs/cnn_mse_lr1e3.pt"
+}

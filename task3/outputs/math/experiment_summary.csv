@@ -1,0 +1,7 @@
+run_name,variant,norm,pos,best_val_exact,test_exact
+math_s2s_ln_sin_in_dist,seq2seq,layernorm,sinusoidal,0.00125,0.00125
+math_s2s_ln_sin_ood,seq2seq,layernorm,sinusoidal,0.00125,0.0
+math_s2s_rms_sin_ood,seq2seq,rmsnorm,sinusoidal,0.0025,0.0
+math_s2s_rms_rope_ood,seq2seq,rmsnorm,rope,0.00375,0.0
+math_dec_ln_sin_ood,decoder_only,layernorm,sinusoidal,0.00125,0.0
+math_dec_rms_rope_ood,decoder_only,rmsnorm,rope,0.00125,0.0

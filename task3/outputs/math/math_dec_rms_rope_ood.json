@@ -1,0 +1,123 @@
+{
+  "run_name": "math_dec_rms_rope_ood",
+  "config": {
+    "run_name": "math_dec_rms_rope_ood",
+    "output_dir": "task3/outputs/math",
+    "seed": 42,
+    "device": "auto",
+    "train_templates": [
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "test_templates": [
+      [
+        3,
+        5
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "n_train_per_template": 2000,
+    "n_test_per_template": 400,
+    "val_ratio": 0.1,
+    "model_variant": "decoder_only",
+    "num_layers": 4,
+    "d_model": 128,
+    "nhead": 4,
+    "num_encoder_layers": 2,
+    "num_decoder_layers": 2,
+    "ff_dim": 256,
+    "dropout": 0.1,
+    "max_len": 64,
+    "norm_type": "rmsnorm",
+    "pos_encoding": "rope",
+    "rope_base": 10000.0,
+    "batch_size": 128,
+    "epochs": 12,
+    "lr": 0.0002
+  },
+  "device": "cuda",
+  "vocab_size": 15,
+  "best_val_exact": 0.00125,
+  "test_exact": 0.0,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.4087951795059324,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.0193001796192354,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.9242071823425069,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.8963642261887534,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.8833723336795005,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.8740457634099374,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.8669262777157178,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.8596021783795555,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.8527165129770484,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.8444662713391813,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 11,
+      "train_loss": 1.8342036300139712,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 12,
+      "train_loss": 1.8227153577256847,
+      "val_exact": 0.0
+    }
+  ],
+  "elapsed_sec": 325.06885719299316,
+  "model_path": "task3/outputs/math/math_dec_rms_rope_ood.pt"
+}

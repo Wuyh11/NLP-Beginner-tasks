@@ -1,0 +1,123 @@
+{
+  "run_name": "math_dec_ln_sin_ood",
+  "config": {
+    "run_name": "math_dec_ln_sin_ood",
+    "output_dir": "task3/outputs/math",
+    "seed": 42,
+    "device": "auto",
+    "train_templates": [
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "test_templates": [
+      [
+        3,
+        5
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "n_train_per_template": 2000,
+    "n_test_per_template": 400,
+    "val_ratio": 0.1,
+    "model_variant": "decoder_only",
+    "num_layers": 4,
+    "d_model": 128,
+    "nhead": 4,
+    "num_encoder_layers": 2,
+    "num_decoder_layers": 2,
+    "ff_dim": 256,
+    "dropout": 0.1,
+    "max_len": 64,
+    "norm_type": "layernorm",
+    "pos_encoding": "sinusoidal",
+    "rope_base": 10000.0,
+    "batch_size": 128,
+    "epochs": 12,
+    "lr": 0.0002
+  },
+  "device": "cuda",
+  "vocab_size": 15,
+  "best_val_exact": 0.00125,
+  "test_exact": 0.0,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.319691818555102,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.0310066329422614,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.9541474184105811,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.930748237737445,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.9163507406293971,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.9058564668213984,
+      "val_exact": 0.00125
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.9008599415515826,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.8909163305038246,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.8815207482054348,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.8741342097845872,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 11,
+      "train_loss": 1.8693501831753856,
+      "val_exact": 0.0
+    },
+    {
+      "epoch": 12,
+      "train_loss": 1.8630434527513866,
+      "val_exact": 0.0
+    }
+  ],
+  "elapsed_sec": 194.73013067245483,
+  "model_path": "task3/outputs/math/math_dec_ln_sin_ood.pt"
+}

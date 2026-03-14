@@ -43,7 +43,7 @@ class TrainConfig:
     vocab_size: int = 50000
     max_len: int = 128
     batch_size: int = 64
-    epochs: int = 8
+    epochs: int = 30
     lr: float = 1e-3
     weight_decay: float = 0.0
     dropout: float = 0.5

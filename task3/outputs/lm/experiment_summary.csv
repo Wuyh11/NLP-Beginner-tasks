@@ -1,0 +1,6 @@
+run_name,tokenizer,vocab_size,norm,pos,best_val_ppl,test_ppl
+lm_word_ln_sin_v500,word,500,layernorm,sinusoidal,2.1209345339741215,2.124338629795345
+lm_word_rms_rope_v500,word,500,rmsnorm,rope,2.124438427987491,2.125312501493134
+lm_word_ln_sin_v200,word,200,layernorm,sinusoidal,2.1209345339741215,2.124338629795345
+lm_char_ln_sin_v200,char,200,layernorm,sinusoidal,1.205121588881229,1.2056897265897242
+lm_char_rms_rope_v200,char,200,rmsnorm,rope,1.2064491126961818,1.2074184963698473

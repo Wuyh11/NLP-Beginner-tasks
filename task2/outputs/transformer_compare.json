@@ -1,0 +1,94 @@
+{
+  "run_name": "transformer_compare",
+  "config": {
+    "data_dir": "data",
+    "train_file": "new_train.tsv",
+    "test_file": "new_test.tsv",
+    "val_size": 0.1,
+    "seed": 42,
+    "min_freq": 1,
+    "vocab_size": 50000,
+    "max_len": 128,
+    "batch_size": 64,
+    "epochs": 8,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "dropout": 0.5,
+    "embedding_dim": 192,
+    "model_type": "transformer",
+    "loss": "ce",
+    "optimizer": "adam",
+    "label_smoothing": 0.0,
+    "num_filters": 100,
+    "kernel_sizes": "3,4,5",
+    "rnn_hidden": 128,
+    "rnn_type": "lstm",
+    "bidirectional": true,
+    "nhead": 6,
+    "transformer_layers": 2,
+    "ff_dim": 512,
+    "glove_path": "",
+    "freeze_embedding": false,
+    "output_dir": "task2/outputs",
+    "run_name": "transformer_compare",
+    "device": "auto"
+  },
+  "device": "cuda",
+  "vocab_size": 14505,
+  "glove_coverage": 0.0,
+  "best_val_acc": 0.43259085580304807,
+  "test_loss": 1.6561282065816068,
+  "test_acc": 0.43729223330311273,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5374277850471025,
+      "val_loss": 1.5010199408458518,
+      "val_acc": 0.3305978898007034
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.4108948588448937,
+      "val_loss": 1.4147459767488075,
+      "val_acc": 0.4044548651817116
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.2854977755127202,
+      "val_loss": 1.4499885277060522,
+      "val_acc": 0.4044548651817116
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.1347432987076451,
+      "val_loss": 1.5876920652277724,
+      "val_acc": 0.41852286049237986
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.9943347751356492,
+      "val_loss": 1.6512292275534983,
+      "val_acc": 0.43259085580304807
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.8324657062132894,
+      "val_loss": 1.9509977207094396,
+      "val_acc": 0.4044548651817116
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.7168695318504731,
+      "val_loss": 2.1416534840851007,
+      "val_acc": 0.3974208675263775
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.5878204468950775,
+      "val_loss": 2.514325877007398,
+      "val_acc": 0.4056271981242673
+    }
+  ],
+  "elapsed_sec": 11.190705060958862,
+  "model_path": "task2/outputs/transformer_compare.pt"
+}

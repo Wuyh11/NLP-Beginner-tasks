@@ -1,0 +1,94 @@
+{
+  "run_name": "cnn_k23_adamw",
+  "config": {
+    "data_dir": "data",
+    "train_file": "new_train.tsv",
+    "test_file": "new_test.tsv",
+    "val_size": 0.1,
+    "seed": 42,
+    "min_freq": 1,
+    "vocab_size": 50000,
+    "max_len": 128,
+    "batch_size": 64,
+    "epochs": 8,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "dropout": 0.5,
+    "embedding_dim": 200,
+    "model_type": "cnn",
+    "loss": "ce",
+    "optimizer": "adamw",
+    "label_smoothing": 0.0,
+    "num_filters": 128,
+    "kernel_sizes": "2,3",
+    "rnn_hidden": 128,
+    "rnn_type": "lstm",
+    "bidirectional": true,
+    "nhead": 4,
+    "transformer_layers": 2,
+    "ff_dim": 512,
+    "glove_path": "",
+    "freeze_embedding": false,
+    "output_dir": "task2/outputs",
+    "run_name": "cnn_k23_adamw",
+    "device": "auto"
+  },
+  "device": "cuda",
+  "vocab_size": 14505,
+  "glove_coverage": 0.0,
+  "best_val_acc": 0.4525205158264947,
+  "test_loss": 1.3302752767743282,
+  "test_acc": 0.4508915080084618,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5759299536559015,
+      "val_loss": 1.414961269424501,
+      "val_acc": 0.369284876905041
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.375801799522549,
+      "val_loss": 1.3808875304733044,
+      "val_acc": 0.37514654161781946
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.252155942295584,
+      "val_loss": 1.336523070983842,
+      "val_acc": 0.4091441969519343
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.1393075402940136,
+      "val_loss": 1.3228806490635396,
+      "val_acc": 0.4208675263774912
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.0213540656869498,
+      "val_loss": 1.2906995607847904,
+      "val_acc": 0.447831184056272
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.9111002158186723,
+      "val_loss": 1.2836237424702885,
+      "val_acc": 0.44196951934349354
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.7909699573656636,
+      "val_loss": 1.286373747471209,
+      "val_acc": 0.4525205158264947
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.6845484632700196,
+      "val_loss": 1.3648251691988178,
+      "val_acc": 0.447831184056272
+    }
+  ],
+  "elapsed_sec": 131.4982943534851,
+  "model_path": "task2/outputs/cnn_k23_adamw.pt"
+}

@@ -1,0 +1,94 @@
+{
+  "run_name": "cnn_focal_lr1e3",
+  "config": {
+    "data_dir": "data",
+    "train_file": "new_train.tsv",
+    "test_file": "new_test.tsv",
+    "val_size": 0.1,
+    "seed": 42,
+    "min_freq": 1,
+    "vocab_size": 50000,
+    "max_len": 128,
+    "batch_size": 64,
+    "epochs": 8,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "dropout": 0.5,
+    "embedding_dim": 200,
+    "model_type": "cnn",
+    "loss": "focal",
+    "optimizer": "adam",
+    "label_smoothing": 0.0,
+    "num_filters": 100,
+    "kernel_sizes": "3,4,5",
+    "rnn_hidden": 128,
+    "rnn_type": "lstm",
+    "bidirectional": true,
+    "nhead": 4,
+    "transformer_layers": 2,
+    "ff_dim": 512,
+    "glove_path": "",
+    "freeze_embedding": false,
+    "output_dir": "task2/outputs",
+    "run_name": "cnn_focal_lr1e3",
+    "device": "auto"
+  },
+  "device": "cuda",
+  "vocab_size": 14505,
+  "glove_coverage": 0.0,
+  "best_val_acc": 0.4372801875732708,
+  "test_loss": 1.359898827269777,
+  "test_acc": 0.4366878210939861,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.0196579344653152,
+      "val_loss": 1.4079924893127655,
+      "val_acc": 0.3903868698710434
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7746776639366771,
+      "val_loss": 1.375297979760701,
+      "val_acc": 0.406799531066823
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6356193037219466,
+      "val_loss": 1.3470245773040397,
+      "val_acc": 0.41500586166471276
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.5311759521363224,
+      "val_loss": 1.318316023207214,
+      "val_acc": 0.40093786635404455
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.423116438443187,
+      "val_loss": 1.3211404121495076,
+      "val_acc": 0.40093786635404455
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.345613606197438,
+      "val_loss": 1.331033338136438,
+      "val_acc": 0.4372801875732708
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.27878934397759575,
+      "val_loss": 1.2954218092724978,
+      "val_acc": 0.4243845252051583
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.2275942137497644,
+      "val_loss": 1.3080066874326324,
+      "val_acc": 0.4349355216881594
+    }
+  ],
+  "elapsed_sec": 155.0638725757599,
+  "model_path": "task2/outputs/cnn_focal_lr1e3.pt"
+}

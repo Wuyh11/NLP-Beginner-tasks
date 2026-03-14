@@ -1,0 +1,94 @@
+{
+  "run_name": "rnn_compare",
+  "config": {
+    "data_dir": "data",
+    "train_file": "new_train.tsv",
+    "test_file": "new_test.tsv",
+    "val_size": 0.1,
+    "seed": 42,
+    "min_freq": 1,
+    "vocab_size": 50000,
+    "max_len": 128,
+    "batch_size": 64,
+    "epochs": 8,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "dropout": 0.5,
+    "embedding_dim": 200,
+    "model_type": "rnn",
+    "loss": "ce",
+    "optimizer": "adam",
+    "label_smoothing": 0.0,
+    "num_filters": 100,
+    "kernel_sizes": "3,4,5",
+    "rnn_hidden": 128,
+    "rnn_type": "lstm",
+    "bidirectional": true,
+    "nhead": 4,
+    "transformer_layers": 2,
+    "ff_dim": 512,
+    "glove_path": "",
+    "freeze_embedding": false,
+    "output_dir": "task2/outputs",
+    "run_name": "rnn_compare",
+    "device": "auto"
+  },
+  "device": "cuda",
+  "vocab_size": 14505,
+  "glove_coverage": 0.0,
+  "best_val_acc": 0.4220398593200469,
+  "test_loss": 1.792801020151901,
+  "test_acc": 0.453006950740405,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5024878144807847,
+      "val_loss": 1.4509986166657765,
+      "val_acc": 0.34583821805392734
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.3312853053338365,
+      "val_loss": 1.3672577299238788,
+      "val_acc": 0.3903868698710434
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0788627746128492,
+      "val_loss": 1.3218272018823924,
+      "val_acc": 0.41031652989449
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.8042047609568419,
+      "val_loss": 1.3861232807320418,
+      "val_acc": 0.41735052754982416
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.5389410644711423,
+      "val_loss": 1.6078620180574978,
+      "val_acc": 0.40093786635404455
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.3106168645212627,
+      "val_loss": 1.8160781337675427,
+      "val_acc": 0.4220398593200469
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.1765848395781719,
+      "val_loss": 2.0408682800820674,
+      "val_acc": 0.4208675263774912
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.11077882099132196,
+      "val_loss": 2.2355149122083873,
+      "val_acc": 0.4196951934349355
+    }
+  ],
+  "elapsed_sec": 11.057746887207031,
+  "model_path": "task2/outputs/rnn_compare.pt"
+}

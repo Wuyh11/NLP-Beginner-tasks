@@ -1,0 +1,75 @@
+{
+  "run_name": "lm_word_ln_sin_v500",
+  "config": {
+    "run_name": "lm_word_ln_sin_v500",
+    "output_dir": "task3/outputs/lm",
+    "seed": 42,
+    "device": "auto",
+    "n_sentences": 8000,
+    "tokenizer_mode": "word",
+    "vocab_size": 500,
+    "block_size": 64,
+    "batch_size": 64,
+    "num_layers": 4,
+    "d_model": 192,
+    "nhead": 6,
+    "ff_dim": 384,
+    "dropout": 0.1,
+    "max_len": 256,
+    "norm_type": "layernorm",
+    "pos_encoding": "sinusoidal",
+    "rope_base": 10000.0,
+    "epochs": 8,
+    "lr": 0.0002,
+    "weight_decay": 0.01
+  },
+  "device": "cuda",
+  "vocab_size": 29,
+  "best_val_ppl": 2.1209345339741215,
+  "test_ppl": 2.124338629795345,
+  "sample_text": "the model learns result for research .",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7989216488461162,
+      "val_ppl": 2.124013636531051
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7489937552879024,
+      "val_ppl": 2.1209345339741215
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.7390843195277591,
+      "val_ppl": 2.153397776188989
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.6989499958448632,
+      "val_ppl": 2.2972867714548446
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.6240404031304426,
+      "val_ppl": 2.544480754639349
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.5456044484363046,
+      "val_ppl": 2.8553839631724824
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.4808224400462106,
+      "val_ppl": 3.1658819045472044
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.4313471374123595,
+      "val_ppl": 3.5448512014241125
+    }
+  ],
+  "elapsed_sec": 155.83389735221863,
+  "model_path": "task3/outputs/lm/lm_word_ln_sin_v500.pt"
+}
