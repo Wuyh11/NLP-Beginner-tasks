@@ -6,3 +6,4 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 *.pt
+./task2/resources/glove/wiki_giga_2024_50_MFT20_vectors_seed_123_alpha_0.75_eta_0.075_combined.txt
