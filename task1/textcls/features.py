@@ -1,3 +1,11 @@
+"""Task-1 文本特征工程模块。
+
+实现一个轻量版 `CountVectorizer`：
+- 支持 unigram/bigram/.../n-gram；
+- 支持按词频阈值过滤；
+- 将文本 batch 转为稀疏计数向量（张量形式）。
+"""
+
 from __future__ import annotations
 
 from collections import Counter
@@ -24,9 +32,13 @@ class CountVectorizer:
         return len(self.stoi)
 
     def _tokenize(self, text: str) -> list[str]:
+        """将输入文本按统一规则切分成 token 列表。"""
+
         return TOKEN_PATTERN.findall(text.lower())
 
     def _to_ngrams(self, tokens: list[str]) -> list[str]:
+        """把 token 序列展开为 1~n 阶 n-gram 特征。"""
+
         if self.ngram == 1:
             return tokens
         out: list[str] = []

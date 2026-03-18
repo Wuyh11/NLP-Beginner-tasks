@@ -1,3 +1,12 @@
+"""Task-1 训练入口模块。
+
+核心流程：
+1) 读取并切分数据；
+2) 构建 BoW/N-gram 特征；
+3) 训练手写线性分类器；
+4) 在验证/测试集评估并导出 JSON 结果。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -141,6 +150,8 @@ def run_training(cfg: TrainConfig) -> dict:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """构建命令行参数解析器。"""
+
     p = argparse.ArgumentParser(description="Task-1 文本分类训练")
     p.add_argument("--data-dir", type=str, default="data")
     p.add_argument("--train-file", type=str, default="new_train.tsv")
@@ -162,6 +173,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    """CLI 主函数：解析参数并启动训练。"""
+
     args = build_parser().parse_args()
     cfg = TrainConfig(
         data_dir=args.data_dir,

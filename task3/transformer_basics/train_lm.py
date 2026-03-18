@@ -1,3 +1,10 @@
+"""Task-3 语言模型训练模块。
+
+训练对象：`DecoderOnlyTransformer`。
+评估指标：Perplexity（困惑度）。
+额外功能：训练后支持基于 prompt 的贪心生成。
+"""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
@@ -50,6 +57,8 @@ class LMTrainConfig:
 
 
 def set_seed(seed: int) -> None:
+    """设置随机种子，提升实验可复现性。"""
+
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -57,12 +66,16 @@ def set_seed(seed: int) -> None:
 
 
 def auto_device(preferred: str) -> torch.device:
+    """按配置自动选择运算设备。"""
+
     if preferred == "auto":
         return torch.device("cuda" if torch.cuda.is_available() else "cpu")
     return torch.device(preferred)
 
 
 def _build_model(cfg: LMTrainConfig, tok: LMTokenizer) -> DecoderOnlyTransformer:
+    """根据训练配置与 tokenizer 构建 Decoder-only Transformer。"""
+
     model_cfg = TransformerConfig(
         vocab_size=tok.vocab_size,
         pad_idx=tok.pad_idx,
@@ -141,6 +154,8 @@ def generate_text(
 
 
 def run_training(cfg: LMTrainConfig) -> dict:
+    """执行 LM 训练、验证、测试并输出结果字典。"""
+
     set_seed(cfg.seed)
     device = auto_device(cfg.device)
 

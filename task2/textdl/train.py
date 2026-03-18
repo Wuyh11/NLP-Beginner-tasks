@@ -1,3 +1,12 @@
+"""Task-2 训练主模块。
+
+支持：
+1) 三类模型（CNN/RNN/Transformer）；
+2) 多种损失函数（CE/MSE/Focal）；
+3) 多种优化器（Adam/AdamW/SGD）；
+4) 可选 GloVe 初始化与 embedding 冻结。
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -81,6 +90,8 @@ def set_seed(seed: int) -> None:
 
 
 def parse_kernel_sizes(raw: str) -> tuple[int, ...]:
+    """将如 `"3,4,5"` 的字符串解析为卷积核大小元组。"""
+
     items = [int(x.strip()) for x in raw.split(",") if x.strip()]
     if not items:
         raise ValueError("kernel_sizes 不能为空")
@@ -179,6 +190,8 @@ def build_loss(cfg: TrainConfig, num_classes: int) -> nn.Module:
 
 
 def compute_loss(loss_fn: nn.Module, logits: torch.Tensor, y: torch.Tensor, num_classes: int, loss_name: str) -> torch.Tensor:
+    """统一计算不同损失函数的 batch loss。"""
+
     if loss_name == "mse":
         target = torch.zeros((y.size(0), num_classes), device=y.device)
         target.scatter_(1, y.unsqueeze(1), 1.0)
@@ -360,6 +373,8 @@ def run_training(cfg: TrainConfig) -> dict:
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """构建命令行参数解析器。"""
+
     p = argparse.ArgumentParser(description="Task-2 深度学习文本分类训练")
     p.add_argument("--data-dir", type=str, default="data")
     p.add_argument("--train-file", type=str, default="new_train.tsv")
@@ -400,6 +415,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    """CLI 主函数：解析参数并执行训练。"""
+
     args = build_parser().parse_args()
     cfg = TrainConfig(
         data_dir=args.data_dir,

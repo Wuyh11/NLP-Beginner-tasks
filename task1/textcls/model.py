@@ -1,3 +1,11 @@
+"""Task-1 线性分类器模块。
+
+该实现不依赖 `torch.nn.Module`，目的是帮助理解：
+- 前向计算（`x @ W + b`）；
+- 损失函数与梯度推导；
+- 手写 SGD 参数更新流程。
+"""
+
 from __future__ import annotations
 
 import torch
@@ -23,6 +31,8 @@ class LinearClassifier:
         self.b = torch.zeros((num_classes,), device=device)
 
     def logits(self, x: torch.Tensor) -> torch.Tensor:
+        """计算线性层输出 logits。"""
+
         return x @ self.W + self.b
 
     @staticmethod
@@ -60,6 +70,12 @@ class LinearClassifier:
         loss_name: str = "ce",
         weight_decay: float = 0.0,
     ) -> tuple[float, torch.Tensor, torch.Tensor]:
+        """计算损失与参数梯度。
+
+        返回:
+            `(loss_scalar, grad_W, grad_b)`，用于后续 `step` 更新。
+        """
+
         logits = self.logits(x)
 
         if loss_name == "ce":
@@ -80,4 +96,6 @@ class LinearClassifier:
         self.b -= lr * grad_b
 
     def predict(self, x: torch.Tensor) -> torch.Tensor:
+        """返回每条样本的预测类别 id。"""
+
         return self.logits(x).argmax(dim=1)

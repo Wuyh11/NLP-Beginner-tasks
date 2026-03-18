@@ -1,3 +1,13 @@
+"""Task-3 手写 Transformer 模型模块。
+
+内容覆盖：
+- 基础算子：`MultiHeadAttention`、`RMSNorm`、`RotaryEmbedding`；
+- 结构模块：Encoder/Decoder/Decoder-only block；
+- 完整模型：`Seq2SeqTransformer` 与 `DecoderOnlyTransformer`。
+
+该文件强调“可读性 + 可实验性”，便于教学与模块替换对比。
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -328,6 +338,17 @@ class DecoderOnlyLayer(nn.Module):
 
 @dataclass(slots=True)
 class TransformerConfig:
+    """Transformer 通用配置。
+
+字段说明：
+    vocab_size: 词表大小。
+    pad_idx: padding token id。
+    d_model/nhead/ff_dim: 核心隐藏维度。
+    num_encoder_layers/num_decoder_layers: 层数配置。
+    norm_type: `layernorm` 或 `rmsnorm`。
+    pos_encoding: `sinusoidal` / `rope` / `none`。
+"""
+
     vocab_size: int
     pad_idx: int
     d_model: int = 128

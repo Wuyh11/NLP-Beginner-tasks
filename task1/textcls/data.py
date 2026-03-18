@@ -1,3 +1,11 @@
+"""Task-1 数据读取与切分模块。
+
+该模块职责：
+1) 从 `tsv` 文件读取文本分类数据；
+2) 兼容“有表头 / 无表头”两种数据格式；
+3) 输出统一结构的 `Corpus`，供特征工程与训练代码复用。
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -59,7 +67,18 @@ def load_corpus(
     val_size: float = 0.1,
     random_state: int = 42,
 ) -> Corpus:
-    """读取训练/测试集并按比例切分验证集。"""
+    """读取训练/测试集并按比例切分验证集。
+
+    参数:
+        data_dir: 数据目录。
+        train_file: 训练集文件名。
+        test_file: 测试集文件名。
+        val_size: 从训练集中切分验证集的比例。
+        random_state: 随机种子，确保切分可复现。
+
+    返回:
+        `Corpus` 对象，包含 `train/val/test` 三个 `DatasetSplit`。
+    """
     data_dir = Path(data_dir)
 
     train_df = _load_tsv(data_dir / train_file)

@@ -1,3 +1,11 @@
+"""Task-3 语言模型数据模块。
+
+职责：
+1) 构造可控的合成语料；
+2) 提供 char/word 两种 tokenizer；
+3) 将 token 序列切成固定窗口的 next-token 训练样本。
+"""
+
 from __future__ import annotations
 
 from collections import Counter
@@ -99,6 +107,8 @@ class LMTokenizer:
 
 @dataclass(slots=True)
 class LMDataSplit:
+    """语言模型数据切分（按 token 时间顺序拆分）。"""
+
     train_ids: list[int]
     val_ids: list[int]
     test_ids: list[int]
@@ -136,10 +146,14 @@ class LMDataset(Dataset):
         return max(0, len(self.ids) - self.block - 1)
 
     def __getitem__(self, idx: int) -> tuple[torch.Tensor, torch.Tensor]:
+        """返回一个样本 `(x, y)`，其中 `y` 为 `x` 右移一位。"""
+
         x = torch.tensor(self.ids[idx : idx + self.block], dtype=torch.long)
         y = torch.tensor(self.ids[idx + 1 : idx + self.block + 1], dtype=torch.long)
         return x, y
 
 
 def make_lm_loader(ds: LMDataset, batch_size: int, shuffle: bool) -> DataLoader:
+    """构建 LM 训练 DataLoader。"""
+
     return DataLoader(ds, batch_size=batch_size, shuffle=shuffle)

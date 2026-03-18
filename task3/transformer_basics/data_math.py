@@ -1,3 +1,10 @@
+"""Task-3 数学加法数据模块。
+
+该模块生成可控位数模板的加法样本，并提供：
+- seq2seq 训练数据（输入 `a+b`，输出 `sum`）；
+- decoder-only 训练数据（完整串 `a+b=sum`）。
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -78,6 +85,8 @@ class MathSample:
 
 
 def _random_n_digit(n: int, rng: random.Random) -> int:
+    """随机采样一个 `n` 位正整数。"""
+
     low = 10 ** (n - 1)
     high = 10**n - 1
     return rng.randint(low, high)
@@ -115,6 +124,8 @@ class MathSeq2SeqDataset(Dataset):
         return len(self.samples)
 
     def __getitem__(self, idx: int) -> tuple[list[int], list[int], str]:
+        """返回 `(src_ids, tgt_ids, target_text)`。"""
+
         s = self.samples[idx]
         src_ids = self.tok.encode(s.src, add_bos=False, add_eos=True)
         tgt_ids = self.tok.encode(s.tgt, add_bos=True, add_eos=True)
@@ -132,6 +143,8 @@ class MathDecoderOnlyDataset(Dataset):
         return len(self.samples)
 
     def __getitem__(self, idx: int) -> tuple[list[int], str, str]:
+        """返回 `(full_ids, prompt_text, target_text)`。"""
+
         s = self.samples[idx]
         full = self.tok.encode(s.full, add_bos=True, add_eos=True)
         prompt = f"{s.a}+{s.b}="

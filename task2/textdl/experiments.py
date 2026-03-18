@@ -1,3 +1,10 @@
+"""Task-2 批量实验模块。
+
+本模块将多组配置自动串行训练，输出：
+- `experiment_summary.csv` 结果表；
+- 多张柱状图（全部实验、模型对比）。
+"""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -9,7 +16,15 @@ from .train import TrainConfig, run_training
 
 
 def _plot_group(df: pd.DataFrame, x_col: str, y_col: str, title: str, save_path: Path) -> None:
-    """绘制柱状图并保存。"""
+    """绘制柱状图并保存。
+
+    参数:
+        df: 输入结果表。
+        x_col: x 轴字段名。
+        y_col: y 轴字段名。
+        title: 图标题。
+        save_path: 图片输出路径。
+    """
 
     plt.figure(figsize=(9, 4.8))
     plt.bar(df[x_col], df[y_col], color="#4C72B0")

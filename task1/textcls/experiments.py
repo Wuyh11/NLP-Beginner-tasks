@@ -1,3 +1,11 @@
+"""Task-1 对比实验模块。
+
+用于批量运行多组超参数（n-gram、损失函数、学习率）并：
+- 汇总结果为表格；
+- 导出 CSV；
+- 绘制测试集准确率柱状图。
+"""
+
 from __future__ import annotations
 
 from pathlib import Path

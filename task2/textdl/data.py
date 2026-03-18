@@ -1,3 +1,11 @@
+"""Task-2 数据处理模块。
+
+主要功能：
+1) TSV 数据读取与标准化；
+2) 文本分词与词表（`Vocab`）构建；
+3) `Dataset` + `DataLoader` 组织，并在 `collate_fn` 内动态 padding。
+"""
+
 from __future__ import annotations
 
 from collections import Counter
@@ -60,6 +68,8 @@ class Vocab:
         return len(self.itos)
 
     def build(self, texts: list[str]) -> None:
+        """在训练文本上统计词频并建立 token-id 映射。"""
+
         counter: Counter[str] = Counter()
         for text in texts:
             counter.update(tokenize(text))
@@ -73,6 +83,8 @@ class Vocab:
             self.itos.append(tok)
 
     def encode(self, text: str, max_len: int) -> list[int]:
+        """将单条文本转为定长上限的 token id 序列。"""
+
         token_ids = [self.stoi.get(tok, self.unk_idx) for tok in tokenize(text)]
         if not token_ids:
             token_ids = [self.unk_idx]
@@ -169,6 +181,8 @@ def build_dataloader(
     ds = TextDataset(texts, labels, vocab, max_len)
 
     def collate_fn(batch: list[tuple[list[int], int]]) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """将不同长度样本拼成 batch，并返回长度信息供 RNN 使用。"""
+
         seqs, ys = zip(*batch)
         lengths = torch.tensor([len(s) for s in seqs], dtype=torch.long)
         max_batch_len = int(lengths.max().item())

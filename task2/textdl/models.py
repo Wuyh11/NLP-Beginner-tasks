@@ -1,3 +1,11 @@
+"""Task-2 模型定义模块。
+
+包含三类经典文本分类网络：
+- `TextCNN`：卷积 + 全局池化；
+- `TextRNN`：LSTM/GRU 序列编码；
+- `TextTransformer`：Encoder 自注意力建模。
+"""
+
 from __future__ import annotations
 
 import math
@@ -113,6 +121,8 @@ class PositionalEncoding(nn.Module):
         self.register_buffer("pe", pe.unsqueeze(0), persistent=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """将位置编码加到 token embedding 上。"""
+
         return x + self.pe[:, : x.size(1)]
 
 

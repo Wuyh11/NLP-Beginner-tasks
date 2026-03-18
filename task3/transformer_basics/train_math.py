@@ -1,3 +1,11 @@
+"""Task-3 数学加法训练模块。
+
+目标：比较不同 Transformer 模块配置在“位数泛化”场景下的表现。
+支持两种建模方式：
+- `seq2seq`（编码器-解码器）；
+- `decoder_only`（自回归）。
+"""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
@@ -74,6 +82,8 @@ def auto_device(preferred: str) -> torch.device:
 
 
 def _split_train_val(samples: list[MathSample], val_ratio: float, seed: int) -> tuple[list[MathSample], list[MathSample]]:
+    """按比例切分训练/验证样本。"""
+
     rng = random.Random(seed)
     arr = samples.copy()
     rng.shuffle(arr)
@@ -82,6 +92,8 @@ def _split_train_val(samples: list[MathSample], val_ratio: float, seed: int) -> 
 
 
 def _build_tokenizer(train_samples: list[MathSample], test_samples: list[MathSample]) -> CharTokenizer:
+    """基于 train+test 文本建立字符词表，避免 OOV。"""
+
     tok = CharTokenizer()
     texts: list[str] = []
     for s in train_samples + test_samples:
@@ -249,6 +261,8 @@ def evaluate_exact_match(
 
 
 def run_training(cfg: MathTrainConfig) -> dict:
+    """执行完整训练流程，并返回包含指标与路径的结果字典。"""
+
     set_seed(cfg.seed)
     device = auto_device(cfg.device)
 

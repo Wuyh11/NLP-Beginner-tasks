@@ -1,3 +1,11 @@
+"""Task-3 实验编排模块。
+
+提供三个层级入口：
+1) 数学子任务实验（exact match）；
+2) 语言模型子任务实验（perplexity）；
+3) 一键运行全部实验并生成汇总表。
+"""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -10,6 +18,8 @@ from .train_math import MathTrainConfig, run_training as run_math_training
 
 
 def _plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, save_path: Path) -> None:
+    """通用柱状图绘制工具。"""
+
     plt.figure(figsize=(9, 4.8))
     plt.bar(df[x_col], df[y_col], color="#4C72B0")
     plt.xticks(rotation=25, ha="right")
